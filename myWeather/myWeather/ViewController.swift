@@ -171,11 +171,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     
     func designMapForResponse(responseDictionary:[String:Any],locCoordinate:CLLocationCoordinate2D,currentPlace:Bool) {
         if responseDictionary.keys.contains(ConstantString.kMainKey) {
-            let mainDict:[String:Any] = responseDictionary[ConstantString.kMainKey] as! [String : Any]
-            var temp = ConstantString.kBlank
-            if (UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) == nil) {
-                UserDefaults.standard.set(1, forKey: ConstantString.kTempUnitKey)
-            }
+            DispatchQueue.main.async {
+                let mainDict:[String:Any] = responseDictionary[ConstantString.kMainKey] as! [String : Any]
+                var temp = ConstantString.kBlank
+                if (UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) == nil) {
+                    UserDefaults.standard.set(1, forKey: ConstantString.kTempUnitKey)
+                }
                 let flag = UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) as! Bool
                 if flag{
                     temp = "\(mainDict[ConstantString.kTempKey]!)°C"
@@ -184,16 +185,17 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
                     let tempString:String = String(describing: mainDict[ConstantString.kTempKey]!)
                     temp = tempString.convertToFahrenheit(temperature: tempString)
                 }
-            
-            if currentPlace {
-                self.currentPlace.text = responseDictionary[ConstantString.kNameKey] as? String
-                self.currentTemp.text = temp
+                
+                if currentPlace {
+                    self.currentPlace.text = responseDictionary[ConstantString.kNameKey] as? String
+                    self.currentTemp.text = temp
+                }
+                self.addAnnotation(locCoordinate: locCoordinate, place: (responseDictionary[ConstantString.kNameKey] as? String)!, temp: temp)
+                let coordinateRegion = MKCoordinateRegionMakeWithDistance(locCoordinate,
+                                                                          self.regionRadius, self.regionRadius)
+                self.mapView.setRegion(coordinateRegion, animated: true)
+                self.uiElementStateAfterLoading()
             }
-            self.addAnnotation(locCoordinate: locCoordinate, place: (responseDictionary[ConstantString.kNameKey] as? String)!, temp: temp)
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(locCoordinate,
-                                                                      self.regionRadius, self.regionRadius)
-            self.mapView.setRegion(coordinateRegion, animated: true)
-            self.uiElementStateAfterLoading()
         }
     }
     
