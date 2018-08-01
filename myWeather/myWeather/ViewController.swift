@@ -98,7 +98,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         self.initialLoad()
     }
 
-    func resetAll(notification: NSNotification) {
+    @objc func resetAll(notification: NSNotification) {
         for annotation in mapView.annotations {
             mapView.removeAnnotation(annotation)
         }
@@ -123,6 +123,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     
     func getCurrentLocationCoordinate() -> CLLocationCoordinate2D {
         locManager.desiredAccuracy = kCLLocationAccuracyBest
+        locManager.delegate = self
+        locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locManager.requestAlwaysAuthorization()
         locManager.startUpdatingHeading()
         currentLocation = locManager.location
@@ -134,7 +136,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         self.getWeatherReportForLocation(locCoordinate: self.getCurrentLocationCoordinate(),currentLocation: true)
     }
     
-    func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
+    @objc func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .ended {
             let point = gesture.location(in: self.mapView)
             let coordinate = self.mapView.convert(point, toCoordinateFrom: self.mapView)
@@ -170,7 +172,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         if responseDictionary.keys.contains(ConstantString.kMainKey) {
             let mainDict:[String:Any] = responseDictionary[ConstantString.kMainKey] as! [String : Any]
             var temp = ConstantString.kBlank
-            if (UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) != nil) {
+            if (UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) == nil) {
+                UserDefaults.standard.set(1, forKey: ConstantString.kTempUnitKey)
+            }
                 let flag = UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) as! Bool
                 if flag{
                     temp = "\(mainDict[ConstantString.kTempKey]!)°C"
@@ -179,7 +183,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
                     let tempString:String = String(describing: mainDict[ConstantString.kTempKey]!)
                     temp = tempString.convertToFahrenheit(temperature: tempString)
                 }
-            }
+            
             if currentPlace {
                 self.currentPlace.text = responseDictionary[ConstantString.kNameKey] as? String
                 self.currentTemp.text = temp
@@ -251,7 +255,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         return pinView
     }
     
-    func fetchWeatherDetails(_ sender: Any) {
+    @objc func fetchWeatherDetails(_ sender: Any) {
         self.performSegue(withIdentifier: ConstantString.kDetailWeatherSegue, sender: self)
     }
     
