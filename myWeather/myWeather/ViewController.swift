@@ -125,6 +125,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         locManager.desiredAccuracy = kCLLocationAccuracyBest
         locManager.delegate = self
         locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locManager.requestWhenInUseAuthorization()
         locManager.requestAlwaysAuthorization()
         locManager.startUpdatingHeading()
         currentLocation = locManager.location
