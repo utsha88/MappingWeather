@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G20015" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PlaceEntity" representedClassName="PlaceEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SettingEntity" representedClassName="SettingEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="celcius" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PlaceEntity" positionX="-63" positionY="-9" width="128" height="60"/>
+        <element name="SettingEntity" positionX="-63" positionY="0" width="128" height="60"/>
+    </elements>
+</model>
