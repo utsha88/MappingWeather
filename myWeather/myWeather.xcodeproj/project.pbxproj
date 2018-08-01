@@ -31,6 +31,8 @@
 		BDDBEBE32108F0D200EAF00C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDDBEBE12108F0D200EAF00C /* LaunchScreen.storyboard */; };
 		BDDBEBEE2108F0D200EAF00C /* myWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBEBED2108F0D200EAF00C /* myWeatherTests.swift */; };
 		BDDBEBF92108F0D300EAF00C /* myWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBEBF82108F0D300EAF00C /* myWeatherUITests.swift */; };
+		D4BCCB75211175FC0009B07E /* logo_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = D4BCCB74211175FB0009B07E /* logo_1024.png */; };
+		D4BCCB77211179430009B07E /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D4BCCB76211179430009B07E /* launchScreen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		BDDBEBF82108F0D300EAF00C /* myWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myWeatherUITests.swift; sourceTree = "<group>"; };
 		BDDBEBFA2108F0D300EAF00C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4BCCB72211169C00009B07E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D4BCCB74211175FB0009B07E /* logo_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_1024.png; path = myWeather/Images/logo_1024.png; sourceTree = "<group>"; };
+		D4BCCB76211179430009B07E /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchScreen.png; path = myWeather/Images/launchScreen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 		BDD7C08D210BC27A0047FB78 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D4BCCB76211179430009B07E /* launchScreen.png */,
+				D4BCCB74211175FB0009B07E /* logo_1024.png */,
 				BDD7C0AF210FCB2F0047FB78 /* bgForecast.png */,
 				BDD7C0AD210FB1980047FB78 /* TempUnit.png */,
 				BDD7C0A3210FADE20047FB78 /* bookmark.png */,
@@ -303,7 +309,7 @@
 				TargetAttributes = {
 					BDDBEBD12108F0D200EAF00C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = J892HJ8YG9;
+						DevelopmentTeam = Z98TJ98R69;
 						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
@@ -311,14 +317,13 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = J892HJ8YG9;
 						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = BDDBEBD12108F0D200EAF00C;
 					};
 					BDDBEBF32108F0D300EAF00C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = J892HJ8YG9;
 						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = BDDBEBD12108F0D200EAF00C;
 					};
 				};
@@ -351,12 +356,14 @@
 				BDD7C0AE210FB1980047FB78 /* TempUnit.png in Resources */,
 				BDD7C08F210BC28C0047FB78 /* gps.png in Resources */,
 				BDDBEBE32108F0D200EAF00C /* LaunchScreen.storyboard in Resources */,
+				D4BCCB75211175FC0009B07E /* logo_1024.png in Resources */,
 				BDDBEBE02108F0D200EAF00C /* Assets.xcassets in Resources */,
 				BDD7C0A8210FADE20047FB78 /* bookmark.png in Resources */,
 				BDD7C0A2210F9F1B0047FB78 /* Overview.html in Resources */,
 				BDDBEBDB2108F0D200EAF00C /* Main.storyboard in Resources */,
 				BDD7C0AB210FADE20047FB78 /* settings.png in Resources */,
 				BDD7C0A9210FADE20047FB78 /* help.png in Resources */,
+				D4BCCB77211179430009B07E /* launchScreen.png in Resources */,
 				BDD7C0B0210FCB2F0047FB78 /* bgForecast.png in Resources */,
 				BDD7C0AC210FADE20047FB78 /* trash.png in Resources */,
 				BDD7C0AA210FADE20047FB78 /* Reset.png in Resources */,
@@ -559,11 +566,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J892HJ8YG9;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z98TJ98R69;
 				INFOPLIST_FILE = myWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UG.myWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -574,11 +584,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J892HJ8YG9;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z98TJ98R69;
 				INFOPLIST_FILE = myWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UG.myWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -590,11 +603,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = J892HJ8YG9;
 				INFOPLIST_FILE = myWeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UG.myWeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myWeather.app/myWeather";
@@ -606,11 +621,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = J892HJ8YG9;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = myWeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UG.myWeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myWeather.app/myWeather";
@@ -621,11 +638,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = J892HJ8YG9;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = myWeatherUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UG.myWeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = myWeather;
@@ -636,11 +655,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = J892HJ8YG9;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = myWeatherUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UG.myWeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = myWeather;
