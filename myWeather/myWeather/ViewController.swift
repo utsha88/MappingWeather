@@ -174,6 +174,29 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         task.resume()
     }
     
+    func getWeatherReportForCity(city:String) {
+        self.activityIndicator.isHidden = false
+        let task = URLSession.shared.dataTask(with: self.weatherRequestFor(city: city)){
+            (data, response, error) in
+            if error == nil{
+                let responseDictionary = try? JSONSerialization.jsonObject(with: data!, options: []) as! Dictionary<String, Any>
+                self.designMapForResponse(responseDictionary: responseDictionary!, locCoordinate: locCoordinate,currentPlace: currentLocation)
+            }
+        }
+        task.resume()
+    }
+    
+    func weatherRequestFor(city:String) -> URLRequest {
+        self.helpButton.isEnabled = false
+        self.settingsButton.isEnabled = false
+        self.deleteButton.isEnabled = false
+        self.bookmarkButton.isEnabled = false
+        let urlString:String = "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=c6e381d8c7ff98f0fee43775817cf6ad&units=metric"
+        let myUrl = URL(string:urlString)
+        let request = URLRequest(url:myUrl!)
+        return request
+    }
+    
     func designMapForResponse(responseDictionary:[String:Any],locCoordinate:CLLocationCoordinate2D,currentPlace:Bool) {
         if responseDictionary.keys.contains(ConstantString.kMainKey) {
             DispatchQueue.main.async {
