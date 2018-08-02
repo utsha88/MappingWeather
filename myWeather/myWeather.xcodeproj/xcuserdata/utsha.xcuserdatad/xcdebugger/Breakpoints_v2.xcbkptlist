@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
             endingLineNumber = "195"
-            landmarkName = "addAnnotation(locCoordinate:place:temp:)"
+            landmarkName = "designMapForResponse(responseDictionary:locCoordinate:currentPlace:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
