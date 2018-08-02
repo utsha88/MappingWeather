@@ -84,6 +84,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         if (UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) != nil) {
             let flag:Bool = UserDefaults.standard.value(forKey: ConstantString.kTempUnitKey) as! Bool
             if self.celFlag != flag {
+
+                for annotation in mapView.annotations {
+                    mapView.removeAnnotation(annotation)
+                }
+
                 initialLoad()
                 self.celFlag = flag
             }
