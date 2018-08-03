@@ -161,6 +161,16 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="RXB-Eq-yOV"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFl-Qc-sMt">
+                                <rect key="frame" x="333" y="82" width="34" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="ngF-Fl-0r7"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="microphone.png"/>
+                                <connections>
+                                    <action selector="recordMyVoice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M2M-4P-mHq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -170,10 +180,12 @@
                             <constraint firstItem="yNu-1h-RPB" firstAttribute="top" secondItem="6Mf-le-ADp" secondAttribute="bottom" id="DfJ-9r-V9W"/>
                             <constraint firstAttribute="trailing" secondItem="6Mf-le-ADp" secondAttribute="trailing" id="GMk-7y-bhC"/>
                             <constraint firstAttribute="trailing" secondItem="6qO-yz-i2f" secondAttribute="trailing" constant="16" id="Gvs-WA-gad"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jFl-Qc-sMt" secondAttribute="trailing" constant="-8" id="Lf5-1g-Z0z"/>
                             <constraint firstItem="21y-LP-xgg" firstAttribute="leading" secondItem="Z0t-NA-Y9U" secondAttribute="trailing" constant="8" id="NxA-Ws-KNY"/>
                             <constraint firstItem="6Mf-le-ADp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="R9J-Fw-24x"/>
                             <constraint firstItem="6qO-yz-i2f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="21y-LP-xgg" secondAttribute="leading" id="Re8-JG-0Yq"/>
                             <constraint firstAttribute="trailing" secondItem="21y-LP-xgg" secondAttribute="trailing" constant="16" id="SQe-hJ-y55"/>
+                            <constraint firstItem="yNu-1h-RPB" firstAttribute="top" secondItem="jFl-Qc-sMt" secondAttribute="bottom" constant="16" id="TZD-YN-FtP"/>
                             <constraint firstAttribute="bottom" secondItem="yNu-1h-RPB" secondAttribute="bottom" id="aOa-Nd-6gR"/>
                             <constraint firstAttribute="trailing" secondItem="ekR-en-EGd" secondAttribute="trailing" constant="165" id="br1-Ci-YZw"/>
                             <constraint firstItem="ekR-en-EGd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gdQ-Pj-q5T"/>
@@ -217,6 +229,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ekR-en-EGd" id="7rQ-nn-eVe"/>
                         <outlet property="bookmarkButton" destination="aTi-kg-2qX" id="TXE-rj-QD0"/>
+                        <outlet property="citySearchField" destination="6Mf-le-ADp" id="gh9-PK-Dr0"/>
                         <outlet property="currentPlace" destination="21y-LP-xgg" id="8ZG-q5-t5W"/>
                         <outlet property="currentTemp" destination="6qO-yz-i2f" id="A7X-I0-QzN"/>
                         <outlet property="deleteButton" destination="38g-w9-GwZ" id="EaC-XL-1rA"/>
@@ -421,6 +434,7 @@
         <image name="bookmark.png" width="30" height="30"/>
         <image name="gps.png" width="250" height="291"/>
         <image name="help.png" width="30" height="30"/>
+        <image name="microphone.png" width="10" height="19"/>
         <image name="settings.png" width="30" height="30"/>
         <image name="trash.png" width="30" height="30"/>
     </resources>

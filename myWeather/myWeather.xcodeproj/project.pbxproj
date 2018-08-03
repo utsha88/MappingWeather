@@ -33,6 +33,7 @@
 		BDDBEBF92108F0D300EAF00C /* myWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBEBF82108F0D300EAF00C /* myWeatherUITests.swift */; };
 		D4BCCB75211175FC0009B07E /* logo_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = D4BCCB74211175FB0009B07E /* logo_1024.png */; };
 		D4BCCB77211179430009B07E /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D4BCCB76211179430009B07E /* launchScreen.png */; };
+		D4EA57342113F4190066343D /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EA57332113F4190066343D /* microphone.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		D4BCCB72211169C00009B07E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D4BCCB74211175FB0009B07E /* logo_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_1024.png; path = myWeather/Images/logo_1024.png; sourceTree = "<group>"; };
 		D4BCCB76211179430009B07E /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchScreen.png; path = myWeather/Images/launchScreen.png; sourceTree = "<group>"; };
+		D4EA57332113F4190066343D /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = microphone.png; path = myWeather/Images/microphone.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		BDD7C08D210BC27A0047FB78 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D4EA57332113F4190066343D /* microphone.png */,
 				D4BCCB76211179430009B07E /* launchScreen.png */,
 				D4BCCB74211175FB0009B07E /* logo_1024.png */,
 				BDD7C0AF210FCB2F0047FB78 /* bgForecast.png */,
@@ -362,6 +365,7 @@
 				BDD7C0A2210F9F1B0047FB78 /* Overview.html in Resources */,
 				BDDBEBDB2108F0D200EAF00C /* Main.storyboard in Resources */,
 				BDD7C0AB210FADE20047FB78 /* settings.png in Resources */,
+				D4EA57342113F4190066343D /* microphone.png in Resources */,
 				BDD7C0A9210FADE20047FB78 /* help.png in Resources */,
 				D4BCCB77211179430009B07E /* launchScreen.png in Resources */,
 				BDD7C0B0210FCB2F0047FB78 /* bgForecast.png in Resources */,

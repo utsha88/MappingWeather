@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreData
+import Speech
 
 struct ConstantString {
     static let kResetAllNotification                    = "resetAll"
@@ -72,17 +73,59 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var citySearchField: UISearchBar!
     let locManager = CLLocationManager()
     let regionRadius: CLLocationDistance = CLLocationDistance(ConstantString.kMapLocDistance)
     var currentLocation: CLLocation!
     var selectedLocation:CLLocationCoordinate2D?
     var celFlag = true
-    
     var savedCoordinate:[String] = []
+    
+    let audioEngine = AVAudioEngine()
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    var request = SFSpeechAudioBufferRecognitionRequest()
+    var recognitionTask: SFSpeechRecognitionTask?
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func recordMyVoice(_ sender: Any) {
+        self.recordVoice()
+    }
+    func recordVoice() {
+        let node = audioEngine.inputNode
+//        guard let node = audioEngine.inputNode else {
+//            return
+//        }
+        let recordingFormat = node.outputFormat(forBus: 0)
+        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat, block: {
+            buffer, _ in
+            self.request.append(buffer)
+        })
+        audioEngine.prepare()
+        do{
+            try audioEngine.start()
+        } catch {
+            return print(error)
+        }
+        guard let myRecognizer = SFSpeechRecognizer() else {
+            return
+        }
+        if !myRecognizer.isAvailable {
+            return
+        }
+        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: {
+            result, error in
+            if let result = result {
+                let bestString = result.bestTranscription.formattedString
+                print(bestString)
+                self.citySearchField.text = bestString
+            }else if let error = error {
+                print(error)
+            }
+        })
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
