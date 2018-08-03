@@ -34,6 +34,12 @@ struct ConstantString {
     static let kDateKey                                 = "dt_txt"
     static let kHumidityKey                             = "humidity"
     static let kSpeedKey                                = "speed"
+    
+    static let kErrorMessageKey                         = "message"
+    static let kCoordinateKey                           = "coord"
+    static let kLatitudeKey                             = "lat"
+    static let kLongitudeKey                            = "lon"
+    
     static let kDetailWeatherSegue                      = "detailedWeather"
     static let kCollectionViewCellId                    = "forecastCell"
     static let kJSONDateFormat                          = "yyyy-MM-dd HH:mm:ss"
@@ -53,7 +59,7 @@ struct ConstantString {
 }
 
 
-class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
+class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
 
     @IBOutlet weak var gpsButton: UIButton!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
@@ -77,6 +83,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        //print("search bar text = \(String(describing: searchBar.text))")
+        self.getWeatherReportForCity(city: searchBar.text!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -180,7 +191,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             (data, response, error) in
             if error == nil{
                 let responseDictionary = try? JSONSerialization.jsonObject(with: data!, options: []) as! Dictionary<String, Any>
-                self.designMapForResponse(responseDictionary: responseDictionary!, locCoordinate: locCoordinate,currentPlace: currentLocation)
+                if (responseDictionary?.keys.contains(ConstantString.kErrorMessageKey))!{
+                    DispatchQueue.main.async {
+                        self.showAlert(heading: ConstantString.kAlert, message: responseDictionary![ConstantString.kErrorMessageKey] as! String, buttonTitle: ConstantString.kOk)
+                    }
+                }
+                else{
+                    let coord:[String:Double] = (responseDictionary![ConstantString.kCoordinateKey]! as? [String : Double])!
+                    let lat = coord[ConstantString.kLatitudeKey]!
+                    let lon = coord[ConstantString.kLongitudeKey]!
+                    let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    self.designMapForResponse(responseDictionary: responseDictionary!, locCoordinate: coordinate,currentPlace: false)
+                }
             }
         }
         task.resume()
@@ -191,7 +213,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         self.settingsButton.isEnabled = false
         self.deleteButton.isEnabled = false
         self.bookmarkButton.isEnabled = false
-        let urlString:String = "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=c6e381d8c7ff98f0fee43775817cf6ad&units=metric"
+        
+        let urlString:String = "http://api.openweathermap.org/data/2.5/weather?q=\(city.replacingOccurrences(of: " ", with: "%20"))&appid=c6e381d8c7ff98f0fee43775817cf6ad&units=metric"
         let myUrl = URL(string:urlString)
         let request = URLRequest(url:myUrl!)
         return request
